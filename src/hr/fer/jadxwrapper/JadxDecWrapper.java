@@ -12,27 +12,27 @@ public class JadxDecWrapper {
     private JadxArgs arguments;
     private JadxDecompiler decompiler;
 
-    public JadxDecWrapper(String apkFilePath, String outDirPath, String args) {
+    public JadxDecWrapper(File apkFile, File outDir, String args) {
         // TODO set all arguments using method calls
         //this.arguments = new JadxArgs();
         //this.arguments.set...
 
-        this.apkFile = new File(apkFilePath);
-        this.outDir = new File(outDirPath);
+        this.apkFile = apkFile;
+        this.outDir = outDir;
         // TODO call decompiler with the specified arguments
         this.decompiler = new JadxDecompiler();
     }
 
-    public void setApkFile(String apkFilePath) {
-        apkFile = new File(apkFilePath);
+    public void setApkFile(File apkFile) {
+        this.apkFile = apkFile;
     }
 
-    public String getApkFilePath() {
-        return apkFile.getAbsolutePath();
+    public File getApkFile() {
+        return apkFile;
     }
 
-    public String getOutDirPath() {
-        return outDir.getAbsolutePath();
+    public File getOutDir() {
+        return outDir;
     }
 
     public void decompile() {

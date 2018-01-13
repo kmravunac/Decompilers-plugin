@@ -28,9 +28,9 @@
 
   <actions>
     <!-- Add your actions here -->
-    <group id="MyPlugin.SampleMenu" text="_Dummy Plugin Menu" description="DummyPlugin">
+    <group id="MyPlugin.SampleMenu" text="_Decompiler Plugin" description="DummyPlugin">
       <add-to-group group-id="MainMenu" anchor="last"  />
-      <action id="Myplugin.Textboxes" class="fer.hr.plugin.TextBoxes" text="Text _Boxes" description="A test menu item" />
+      <action id="Myplugin.Textboxes" class="hr.fer.plugin.DecompileAPK" text="Decompile _APK" description="A test menu item" />
     </group>
   </actions>
 
