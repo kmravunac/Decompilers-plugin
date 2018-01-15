@@ -12,14 +12,16 @@ public class JadxDecWrapper {
     private JadxArgs arguments;
     private JadxDecompiler decompiler;
 
-    public JadxDecWrapper(File apkFile, File outDir, String args) {
-        // TODO set all arguments using method calls
-        //this.arguments = new JadxArgs();
-        //this.arguments.set...
-
+    public JadxDecWrapper(File apkFile, File outDir, JadxArgs args) {
+        this.arguments = args;
         this.apkFile = apkFile;
         this.outDir = outDir;
-        // TODO call decompiler with the specified arguments
+        this.decompiler = new JadxDecompiler(args);
+    }
+
+    public JadxDecWrapper(File apkFile, File outDir) {
+        this.apkFile = apkFile;
+        this.outDir = outDir;
         this.decompiler = new JadxDecompiler();
     }
 
@@ -35,15 +37,27 @@ public class JadxDecWrapper {
         return outDir;
     }
 
-    public void decompile() {
-        decompiler.setOutputDir(outDir);
+    public void setOutDir(File outDir) {
+        this.outDir = outDir;
+    }
 
+    public JadxArgs getArguments() {
+        return arguments;
+    }
+
+    public void setArguments(JadxArgs args) {
+        this.arguments = args;
+    }
+
+    public void decompile() {
         try {
             decompiler.loadFile(apkFile);
         } catch (JadxException e) {
             System.out.println("Something went wrong, jadx exception: ");
             e.printStackTrace();
         }
+
+        decompiler.setOutputDir(outDir);
 
         decompiler.save();
     }

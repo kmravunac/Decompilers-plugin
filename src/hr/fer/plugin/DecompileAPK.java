@@ -25,7 +25,7 @@ public class DecompileAPK extends AnAction {
         String outputDirName = project.getBasePath() + "/" + "plugin-jadx-output";
         File outputDir = new File(outputDirName);
 
-        JadxDecWrapper wrapper = new JadxDecWrapper(apkFile, outputDir, null);
+        JadxDecWrapper wrapper = new JadxDecWrapper(apkFile, outputDir);
 
         if(!outputDir.exists()) {
             outputDir.mkdir();
