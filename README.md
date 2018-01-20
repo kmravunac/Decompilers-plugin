@@ -1,4 +1,4 @@
-This is plugin written in Intellij Idea for my project. Goal of this plugin is to integrate some of the Java decompilers in the Android Studio (specifically those related to APK decompilation). Currently only Jadx is supported.
+This is plugin written in Intellij Idea for my project. Goal of this plugin is to integrate some of the Java decompilers in the Android Studio (specifically those related to APK decompilation).
 
 ### Setting up development environment for development/testing
 
@@ -16,3 +16,7 @@ https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started.html
 ### Installing the plugin
 
 If you want to install the plugin in your IDE, you will need to import plugin jar/zip file from the disk. This can be done in these steps: File > Settings > Plugins > Install plugin from disk and then select the plugin file.
+
+### Using the plugin
+
+Currently only Jadx is supported. Plugin creates new menu item which will when selected prompt user to select the apk file which he wants to decompile. After the file is selected apk file will be decompiled in the background and new folder plugin-jadx-output with decompiled sources will be created in the project root.
