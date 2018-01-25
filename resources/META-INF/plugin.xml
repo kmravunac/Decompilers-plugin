@@ -1,15 +1,15 @@
 <idea-plugin>
-  <id>hr.fer.plugin</id>
-  <name>DummyPlugin</name>
+  <id>hr.fer.decompilator</id>
+  <name>Decompilator</name>
   <version>1.0</version>
-  <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+  <vendor email="karlo.mravunac@fer.hr" url="https://github.com/kmravunac/project-plugin">Decompilator</vendor>
 
   <description><![CDATA[
-      Just a dummy plugin.<br>
+      Plugin which integrates some of the decompilers.<br>
     ]]></description>
 
   <change-notes><![CDATA[
-      Change notes.<br>
+      Jadx integrated.<br>
     ]]>
   </change-notes>
 

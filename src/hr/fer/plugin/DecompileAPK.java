@@ -10,6 +10,10 @@ import com.intellij.openapi.vfs.VirtualFile;
 import hr.fer.jadxwrapper.JadxDecWrapper;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 public class DecompileAPK extends AnAction {
     public DecompileAPK() {
@@ -22,7 +26,9 @@ public class DecompileAPK extends AnAction {
         VirtualFile apk = FileChooser.chooseFile(FileChooserDescriptorFactory.createSingleFileNoJarsDescriptor(), project, project.getBaseDir());
         File apkFile = new File(apk.getCanonicalPath());
 
-        String outputDirName = project.getBasePath() + "/" + "plugin-jadx-output";
+        String outputDirName = project.getBasePath() + "/" + "app/src/main/java";
+        File manifestDir = new File(project.getBasePath() + "/" + "app/src/main/AndroidManifest.xml");
+
         File outputDir = new File(outputDirName);
 
         JadxDecWrapper wrapper = new JadxDecWrapper(apkFile, outputDir);
@@ -32,5 +38,21 @@ public class DecompileAPK extends AnAction {
         }
 
         wrapper.decompile();
+
+        File manifest = null;
+        File[] files = outputDir.listFiles();
+
+        for(File f : files) {
+            if(f.getName().equals("AndroidManifest.xml"))
+                manifest = f;
+        }
+
+        if(manifest != null) {
+            try {
+                Files.move(Paths.get(manifest.getAbsolutePath()), Paths.get(manifestDir.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
