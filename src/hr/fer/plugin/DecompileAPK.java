@@ -7,7 +7,7 @@ import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.vfs.VirtualFile;
-import hr.fer.jadxwrapper.JadxDecWrapper;
+import hr.fer.util.wrapper.JadxWrapper;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,7 +31,7 @@ public class DecompileAPK extends AnAction {
 
         File outputDir = new File(outputDirName);
 
-        JadxDecWrapper wrapper = new JadxDecWrapper(apkFile, outputDir);
+        JadxWrapper wrapper = new JadxWrapper(apkFile, outputDir);
 
         if(!outputDir.exists()) {
             outputDir.mkdir();

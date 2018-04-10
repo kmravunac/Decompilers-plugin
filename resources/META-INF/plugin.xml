@@ -28,10 +28,17 @@
 
   <actions>
     <!-- Add your actions here -->
-    <group id="MyPlugin.SampleMenu" text="_Decompiler Plugin" description="DummyPlugin">
+    <group id="Decompilator.DecompileMenu" text="_Decompiler Plugin" description="Decompilator plugin">
       <add-to-group group-id="MainMenu" anchor="last"  />
-      <action id="Myplugin.Textboxes" class="hr.fer.plugin.DecompileAPK" text="Decompile _APK" description="A test menu item" />
+      <action id="Decompilator.Textboxes" class="hr.fer.plugin.DecompileAPK" text="Decompile _APK" description="Action for apk decompilation" />
     </group>
+    <!--
+    <group id="Decompilator.NewDecompilatorProjectMenu" text="New Decompilator Project" description="Create new Decompilator project">
+      <add-to-group group-id="MainMenu" anchor="last" />
+      <action class="hr.fer.plugin.NewDecompilatorProject" id="Decompilator.NewDecompilatorProject" text="New Decompilator Project" description="Action for creation of new Decompilator project" />
+
+    </group>
+    -->
   </actions>
 
 </idea-plugin>

@@ -1,4 +1,4 @@
-package hr.fer.jadxwrapper;
+package hr.fer.util.wrapper;
 
 import jadx.api.JadxArgs;
 import jadx.api.JadxDecompiler;
@@ -6,20 +6,20 @@ import jadx.core.utils.exceptions.JadxException;
 
 import java.io.File;
 
-public class JadxDecWrapper {
+public class JadxWrapper {
     private File apkFile;
     private File outDir;
     private JadxArgs arguments;
     private JadxDecompiler decompiler;
 
-    public JadxDecWrapper(File apkFile, File outDir, JadxArgs args) {
+    public JadxWrapper(File apkFile, File outDir, JadxArgs args) {
         this.arguments = args;
         this.apkFile = apkFile;
         this.outDir = outDir;
         this.decompiler = new JadxDecompiler(args);
     }
 
-    public JadxDecWrapper(File apkFile, File outDir) {
+    public JadxWrapper(File apkFile, File outDir) {
         this.apkFile = apkFile;
         this.outDir = outDir;
         this.decompiler = new JadxDecompiler();
