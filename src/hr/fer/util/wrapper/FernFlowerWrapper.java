@@ -21,5 +21,21 @@ public class FernFlowerWrapper {
 
         org.jetbrains.java.decompiler.main.decompiler.ConsoleDecompiler.main(args);
     }
+
+    public String getOutDir() {
+        return this.outDir;
+    }
+
+    public void setOutDir(String outDir) {
+        this.outDir = outDir;
+    }
+
+    public String getJarFile() {
+        return this.jarFile;
+    }
+
+    public void setJarFile(String jarFile) {
+        this.jarFile = jarFile;
+    }
 }
 

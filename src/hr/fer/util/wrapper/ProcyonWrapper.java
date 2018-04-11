@@ -11,16 +11,32 @@ public class ProcyonWrapper {
 
     public void decompile(String... arguments) {
         String[] args = null;
-        arguments = new String[4 + arguments.length];
-        arguments[0] = "-jar ";
-        arguments[1] = jarFile;
-        arguments[2] = "-o ";
-        arguments[4] = outDir;
+        args = new String[4 + arguments.length];
+        args[0] = "-jar ";
+        args[1] = jarFile;
+        args[2] = "-o ";
+        args[4] = outDir;
 
         for(int i = 0; i < arguments.length; i++) {
-            arguments[4 + i] = arguments[i];
+            args[4 + i] = arguments[i];
         }
         com.strobel.decompiler.DecompilerDriver.main(args);
+    }
+
+    public String getOutDir() {
+        return this.outDir;
+    }
+
+    public void setOutDir(String outDirPath) {
+        this.outDir = outDirPath;
+    }
+
+    public String getJarFile() {
+        return this.jarFile;
+    }
+
+    public void setJarFile(String jarFilePath) {
+        this.jarFile = jarFilePath;
     }
 }
 
