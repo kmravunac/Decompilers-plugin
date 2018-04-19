@@ -1,4 +1,4 @@
-package hr.fer.util.wrapper;
+package hr.fer.decompilator.util.wrapper;
 
 public class Dex2JarWrapper {
     private String dexFile;

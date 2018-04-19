@@ -1,4 +1,4 @@
-This is plugin written in Intellij Idea for my project. Goal of this plugin is to integrate some of the Java decompilers in the Android Studio (specifically those related to APK decompilation).
+This is plugin written in Intellij Idea for my project. Goal of this plugin is to integrate some of the Java decompilers in the Android Studio.
 
 ### Setting up development environment for development/testing
 
@@ -10,8 +10,7 @@ You can optionally build the code directly from Intellij Idea or from command li
 
 If you want to test this plugin, after importing it in Intellij Idea, you will need to specify the created SDK as project SDK in project settings (File > Project Structure > Project > Project SDK). Also in order to plugin to work with Jadx you will need to add Jadx jars to referenced libraries in project (Project Structure > Libraires). You can find Jadx jars here: https://github.com/skylot/jadx/releases
 
-All the information about plugin development, setting up environment, building the plugin and all the good stuff can be found here:
-https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started.html
+All the information about plugin development, setting up environment, building the plugin and all the good stuff can be found [here](https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started.html)
 
 ### Installing the plugin
 
@@ -19,4 +18,10 @@ If you want to install the plugin in your IDE, you will need to import plugin ja
 
 ### Using the plugin
 
-Currently only Jadx is supported. Plugin creates new menu item which will when selected prompt user to select the apk file which he wants to decompile. After the file is selected apk file will be decompiled in the background and new folder plugin-jadx-output with decompiled sources will be created in the project root.
+Supported tools:
+- [Jadx](https://github.com/skylot/jadx)
+- [Procyon](https://bitbucket.org/mstrobel/procyon)
+- [FernFlower](https://github.com/fesh0r/fernflower)
+- [Dex2Jar](https://github.com/pxb1988/dex2jar)
+
+Plugin creates new menu item which will when selected prompt user to select the apk file which he wants to decompile. After the file is selected apk file will be decompiled in the background and new folder plugin-jadx-output with decompiled sources will be created in the project root.

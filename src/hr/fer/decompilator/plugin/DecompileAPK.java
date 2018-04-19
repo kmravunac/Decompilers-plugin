@@ -1,4 +1,4 @@
-package hr.fer.plugin;
+package hr.fer.decompilator.plugin;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -7,7 +7,7 @@ import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.vfs.VirtualFile;
-import hr.fer.util.wrapper.JadxWrapper;
+import hr.fer.decompilator.util.wrapper.JadxWrapper;
 
 import java.io.File;
 import java.io.IOException;

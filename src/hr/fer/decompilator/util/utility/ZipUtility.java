@@ -1,4 +1,4 @@
-package hr.fer.util.utility;
+package hr.fer.decompilator.util.utility;
 
 import java.io.File;
 import java.io.FileInputStream;
