@@ -9,9 +9,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="jadx-decompiler" level="project" />
     <orderEntry type="library" name="procyon-decompiler-0.5.30" level="project" />
     <orderEntry type="library" name="java-decompiler" level="project" />
     <orderEntry type="library" name="dex2jar" level="project" />
+    <orderEntry type="library" name="jadx-decompiler" level="project" />
   </component>
 </module>

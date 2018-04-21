@@ -12,16 +12,23 @@ public class ZipUtility {
         try {
             ZipInputStream zis = new ZipInputStream(new FileInputStream(new File(zipFile)));
             ZipEntry zipEntry = zis.getNextEntry();
-            while(zipEntry != null) {
+            while (zipEntry != null) {
                 String fileName = zipEntry.getName();
+
                 File file = new File(outputDir + "/" + fileName);
+
+                if(fileName.endsWith("/")) {
+                    file.mkdirs();
+                    zipEntry = zis.getNextEntry();
+                    continue;
+                }
 
                 new File(file.getParent()).mkdirs();
 
                 FileOutputStream fos = new FileOutputStream(file);
 
                 int len;
-                while((len = zis.read(buffer)) > 0) {
+                while ((len = zis.read(buffer)) > 0) {
                     fos.write(buffer, 0, len);
                 }
 
