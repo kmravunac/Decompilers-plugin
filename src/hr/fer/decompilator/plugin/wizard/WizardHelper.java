@@ -1,5 +1,7 @@
 package hr.fer.decompilator.plugin.wizard;
 
+import hr.fer.decompilator.util.utility.Utils;
+
 import javax.swing.*;
 import java.io.File;
 
@@ -56,6 +58,21 @@ public class WizardHelper {
     }
 
     public boolean procyonSelected() {
-        return ds.fernFlowerSelected();
+        return ds.procyonSelected();
+    }
+
+    public void doCleanup(String projectPath) {
+        String javadir = projectPath + File.separator + Utils.javaDir;
+        String resDir = projectPath + File.separator + Utils.resDir;
+        String manifest = projectPath + File.separator + Utils.manifestDir + File.separator + "AndroidManifest.xml";
+
+        try {
+            Utils.cleanupDirectory(javadir);
+            Utils.cleanupDirectory(resDir);
+            File man = new File(manifest);
+            man.delete();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

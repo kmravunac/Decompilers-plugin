@@ -30,6 +30,8 @@ public class Utils {
 
     public static void cleanupDirectory(String projectPath) throws IOException {
         final Path folder = Paths.get(projectPath);
+        File file = new File(projectPath);
+
         Files.walkFileTree(folder, new SimpleFileVisitor<Path>() {
             @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
@@ -39,11 +41,13 @@ public class Utils {
 
             @Override
             public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
+
                 if (exc != null) {
                     throw exc;
                 }
-                if(!dir.toAbsolutePath().equals(projectPath))
+                if(!(dir.toFile().equals(file)))
                     Files.delete(dir);
+
                 return FileVisitResult.CONTINUE;
             }
         });
