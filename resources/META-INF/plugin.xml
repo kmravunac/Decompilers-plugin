@@ -28,7 +28,7 @@
 
   <actions>
     <!-- Add your actions here -->
-    <group id="Decompilator.DecompileMenu" text="_Decompiler Plugin" description="Decompilator plugin">
+    <group id="Decompilator.DecompileMenu" text="_Decompilator" description="Decompilator plugin">
       <add-to-group group-id="MainMenu" anchor="last"  />
       <!-- <action id="Decompilator.Textboxes" class="hr.fer.decompilator.plugin.action.DecompileAPK" text="Decompile _APK" description="Action for apk decompilation" /> -->
       <action id="Decompilator.ImportAPK" class="hr.fer.decompilator.plugin.action.ImportAPK" text="Import APK to project" description="Action for apk importation and decompilation"/>

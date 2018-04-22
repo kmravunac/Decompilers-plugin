@@ -62,17 +62,44 @@ public class WizardHelper {
     }
 
     public void doCleanup(String projectPath) {
-        String javadir = projectPath + File.separator + Utils.javaDir;
-        String resDir = projectPath + File.separator + Utils.resDir;
-        String manifest = projectPath + File.separator + Utils.manifestDir + File.separator + "AndroidManifest.xml";
+        String javaDir = projectPath  + Utils.javaDir;
+        String resDir = projectPath  + Utils.resDir;
+        String manifest = projectPath  + Utils.manifestDir + File.separator + "AndroidManifest.xml";
 
         try {
-            Utils.cleanupDirectory(javadir);
+            Utils.cleanupDirectory(javaDir);
             Utils.cleanupDirectory(resDir);
             File man = new File(manifest);
             man.delete();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public void prepareDirectories(String projectPath) {
+        String tmpDir = projectPath + Utils.tmpDir;
+        String decompiledDir = projectPath + Utils.decompiledRoot;
+        String jadxOutput = projectPath + Utils.jadxOutput;
+        String procyonOutput = projectPath + Utils.procyonOutput;
+        String fernFlowerOutput = projectPath + Utils.fernflowerOutput;
+
+        new File(tmpDir).mkdirs();
+        new File(decompiledDir).mkdirs();
+        new File(jadxOutput).mkdirs();
+        new File(procyonOutput).mkdirs();
+        new File(fernFlowerOutput).mkdirs();
+    }
+
+    public void fetchArguments(String jadxArgs, String procyonArgs, String fernFlowerArgs) {
+        try {
+            jadxArgs = ds.getJadxArgs();
+        } catch (Exception e) {}
+        try {
+            procyonArgs = ds.getProcyonArgs();
+        } catch (Exception e) {}
+
+        try {
+            fernFlowerArgs = ds.getFernFlowerArgs();
+        } catch (Exception e) {}
     }
 }

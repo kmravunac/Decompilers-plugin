@@ -8,13 +8,15 @@ import java.nio.file.attribute.BasicFileAttributes;
 public class Utils {
     public static final String mainBranchPath = File.separator + "app/src/main/java";
     public static final String decompiledRoot = File.separator + "decompiled";
-    public static final String jadxOutput = File.separator + "jadx-output";
-    public static final String procyonOutput = File.separator + "procyon-output";
-    public static final String fernflowerOutput = File.separator + "fernflower-output";
+    public static final String jadxOutput = File.separator + "decompiled/jadx-output";
+    public static final String procyonOutput = File.separator + "decompiled/procyon-output";
+    public static final String fernflowerOutput = File.separator + "decompiled/fernflower-output";
     public static final String tmpDir = File.separator + "tmp";
     public static final String javaDir = File.separator + "app/src/main/java";
     public static final String resDir = File.separator + "app/src/main/res";
     public static final String manifestDir = File.separator + "app/src/main";
+    public static final String dexFile = File.separator + "classes.dex";
+    public static final String jarFile = File.separator + "out.jar";
 
     public static File fetchManifest(File startDir) {
         File manifest = null;

@@ -15,7 +15,7 @@ public class ProcyonWrapper {
         args[0] = "-jar ";
         args[1] = jarFile;
         args[2] = "-o ";
-        args[4] = outDir;
+        args[3] = outDir;
 
         for(int i = 0; i < arguments.length; i++) {
             args[4 + i] = arguments[i];

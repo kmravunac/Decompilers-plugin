@@ -1,5 +1,9 @@
 package hr.fer.decompilator.util.wrapper;
 
+import hr.fer.decompilator.util.utility.ZipUtility;
+
+import java.io.File;
+
 public class FernFlowerWrapper {
     private String outDir;
     private String jarFile;
@@ -20,6 +24,15 @@ public class FernFlowerWrapper {
         args[arguments.length + 1] = outDir;
 
         org.jetbrains.java.decompiler.main.decompiler.ConsoleDecompiler.main(args);
+
+        File jar = new File(jarFile);
+        String jarName = jar.getName();
+
+        String toUnzip = new String(outDir + File.separator + jarName);
+        ZipUtility.unzip(toUnzip, outDir);
+
+        File toDelete = new File(toUnzip);
+        toDelete.delete();
     }
 
     public String getOutDir() {
