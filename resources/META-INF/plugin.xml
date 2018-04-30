@@ -1,7 +1,7 @@
 <idea-plugin>
-  <id>hr.fer.decompilator</id>
-  <name>Decompilator</name>
-  <version>1.0</version>
+  <id>hr.fer.decompiler</id>
+  <name>Decompiler</name>
+  <version>0.0.1</version>
   <vendor email="karlo.mravunac@fer.hr" url="https://github.com/kmravunac/project-plugin">Decompilator</vendor>
 
   <description><![CDATA[
@@ -28,10 +28,11 @@
 
   <actions>
     <!-- Add your actions here -->
-    <group id="Decompilator.DecompileMenu" text="_Decompilator" description="Decompilator plugin">
+    <group id="Decompiler.DecompileMenu" text="_Decompiler" description="Decompiler plugin">
       <add-to-group group-id="MainMenu" anchor="last"  />
-      <!-- <action id="Decompilator.Textboxes" class="hr.fer.decompilator.plugin.action.DecompileAPK" text="Decompile _APK" description="Action for apk decompilation" /> -->
-      <action id="Decompilator.ImportAPK" class="hr.fer.decompilator.plugin.action.ImportAPK" text="Import APK to project" description="Action for apk importation and decompilation"/>
+      <!-- <action id="Decompilator.Textboxes" class="hr.fer.decompilerlugin.action.DecompileAPK" text="Decompile _APK" description="Action for apk decompilation" /> -->
+      <action id="Decompiler.ImportAPK" class="hr.fer.decompiler.plugin.action.ImportAPK" text="Import APK to project" description="Action for apk importation and decompilation"/>-->
+      <action id="Decompiler.DefineSettings" class="hr.fer.decompiler.plugin.action.DefineSettings" text="Define plugin settings" description="Action for plugin arguments definition"/>
     </group>
   </actions>
 

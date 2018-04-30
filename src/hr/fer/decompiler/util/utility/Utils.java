@@ -1,4 +1,4 @@
-package hr.fer.decompilator.util.utility;
+package hr.fer.decompiler.util.utility;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,14 +20,26 @@ public class Utils {
 
     public static File fetchManifest(File startDir) {
         File manifest = null;
+        File[] files = startDir.listFiles();
 
-        for(File f : startDir.listFiles()) {
+        for(File f : files) {
             if(f.getName().equals("AndroidManifest.xml")) {
                 manifest = f;
             }
         }
 
         return manifest;
+    }
+
+    public static boolean isApkPresent(File startDir) {
+        File[] files = startDir.listFiles();
+
+        for(File file : files) {
+            if(com.google.common.io.Files.getFileExtension(file.getAbsolutePath()).equals("apk"))
+                return true;
+        }
+
+        return false;
     }
 
     public static void cleanupDirectory(String projectPath) throws IOException {

@@ -1,17 +1,16 @@
-package hr.fer.decompilator.plugin.wizard;
+package hr.fer.decompiler.plugin.wizard;
 
-import hr.fer.decompilator.util.utility.Utils;
+import hr.fer.decompiler.util.utility.Utils;
 
-import javax.swing.*;
 import java.io.File;
 
 public class WizardHelper {
-    private DecompilatorWizardModel model;
+    private DecompilerWizardModel model;
     private FileSelectionStep fs;
     private SelectDecompilersStep ds;
 
     public WizardHelper() {
-        model = new DecompilatorWizardModel("Decompilator");
+        model = new DecompilerWizardModel("Decompilator");
         fs = new FileSelectionStep("Select APK file");
         ds = new SelectDecompilersStep("Choose decompilers");
 
@@ -24,7 +23,7 @@ public class WizardHelper {
 
     public boolean run() {
         try {
-            DecompilatorWizardDialog dialog = new DecompilatorWizardDialog(false, model);
+            DecompilerWizardDialog dialog = new DecompilerWizardDialog(false, model);
             dialog.show();
         } catch(Exception e) {
             System.out.println(e.getMessage());

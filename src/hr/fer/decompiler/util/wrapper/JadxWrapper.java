@@ -1,4 +1,4 @@
-package hr.fer.decompilator.util.wrapper;
+package hr.fer.decompiler.util.wrapper;
 
 import jadx.api.JadxArgs;
 import jadx.api.JadxDecompiler;

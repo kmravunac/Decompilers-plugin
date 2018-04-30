@@ -1,4 +1,4 @@
-package hr.fer.decompilator.plugin.wizard;
+package hr.fer.decompiler.plugin.wizard;
 
 import com.intellij.ui.wizard.WizardNavigationState;
 import com.intellij.ui.wizard.WizardStep;

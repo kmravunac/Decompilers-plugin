@@ -1,6 +1,6 @@
-package hr.fer.decompilator.util.wrapper;
+package hr.fer.decompiler.util.wrapper;
 
-import hr.fer.decompilator.util.utility.ZipUtility;
+import hr.fer.decompiler.util.utility.ZipUtility;
 
 import java.io.File;
 

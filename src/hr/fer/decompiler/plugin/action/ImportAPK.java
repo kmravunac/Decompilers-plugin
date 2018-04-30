@@ -1,16 +1,16 @@
-package hr.fer.decompilator.plugin.action;
+package hr.fer.decompiler.plugin.action;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.project.Project;
-import hr.fer.decompilator.plugin.wizard.WizardHelper;
-import hr.fer.decompilator.util.utility.Utils;
-import hr.fer.decompilator.util.utility.ZipUtility;
-import hr.fer.decompilator.util.wrapper.Dex2JarWrapper;
-import hr.fer.decompilator.util.wrapper.FernFlowerWrapper;
-import hr.fer.decompilator.util.wrapper.JadxWrapper;
-import hr.fer.decompilator.util.wrapper.ProcyonWrapper;
+import hr.fer.decompiler.plugin.wizard.WizardHelper;
+import hr.fer.decompiler.util.utility.Utils;
+import hr.fer.decompiler.util.utility.ZipUtility;
+import hr.fer.decompiler.util.wrapper.Dex2JarWrapper;
+import hr.fer.decompiler.util.wrapper.FernFlowerWrapper;
+import hr.fer.decompiler.util.wrapper.JadxWrapper;
+import hr.fer.decompiler.util.wrapper.ProcyonWrapper;
 
 import javax.swing.*;
 import java.io.File;
