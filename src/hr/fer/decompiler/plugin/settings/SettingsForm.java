@@ -18,14 +18,6 @@ public class SettingsForm extends DialogWrapper {
     private JCheckBox fernFlowerCheckBox;
     private JTextField fernFlowerArgumentsField;
 
-    /*private String jadxArgs;
-    private String procyonArgs;
-    private String fernFlowerArgs;
-
-    private boolean jadxSelected;
-    private boolean procyonSelected;
-    private boolean fernFlowerSelected;*/
-
     public SettingsForm(String title, Project project) {
         super(project);
         init();

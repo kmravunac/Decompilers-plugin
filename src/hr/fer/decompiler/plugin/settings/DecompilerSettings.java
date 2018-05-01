@@ -65,4 +65,8 @@ public class DecompilerSettings {
     public void setFernFlowerArgs(String fernFlowerArgs) {
         this.fernFlowerArgs = fernFlowerArgs;
     }
+
+    public boolean isAnySelected() {
+        return (jadxSelected || procyonSelected || fernFlowerSelected);
+    }
 }

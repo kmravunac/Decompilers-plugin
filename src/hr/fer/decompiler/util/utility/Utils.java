@@ -31,15 +31,16 @@ public class Utils {
         return manifest;
     }
 
-    public static boolean isApkPresent(File startDir) {
+    public static File fetchApk(String path) {
+        File startDir = new File(path);
         File[] files = startDir.listFiles();
 
         for(File file : files) {
             if(com.google.common.io.Files.getFileExtension(file.getAbsolutePath()).equals("apk"))
-                return true;
+                return file;
         }
 
-        return false;
+        return null;
     }
 
     public static void cleanupDirectory(String projectPath) throws IOException {
@@ -65,5 +66,19 @@ public class Utils {
                 return FileVisitResult.CONTINUE;
             }
         });
+    }
+
+    public static void prepareDirectories(String projectPath) {
+        String tmpDir = projectPath + Utils.tmpDir;
+        String decompiledDir = projectPath + Utils.decompiledRoot;
+        String jadxOutput = projectPath + Utils.jadxOutput;
+        String procyonOutput = projectPath + Utils.procyonOutput;
+        String fernFlowerOutput = projectPath + Utils.fernflowerOutput;
+
+        new File(tmpDir).mkdirs();
+        new File(decompiledDir).mkdirs();
+        new File(jadxOutput).mkdirs();
+        new File(procyonOutput).mkdirs();
+        new File(fernFlowerOutput).mkdirs();
     }
 }
