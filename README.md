@@ -24,4 +24,4 @@ Supported tools:
 - [FernFlower](https://github.com/fesh0r/fernflower)
 - [Dex2Jar](https://github.com/pxb1988/dex2jar)
 
-Plugin creates two menu items: one for defining which decompilers to use and their arguments, and second one which will start decompiling as background task. The apk file will be detected from the project directory, if the apk file is not present the plugin actions will be disabled. Results of the decompilation will be in the decompiled directory of the project.
+Plugin creates two menu items: one for defining which decompilers to use and their arguments, and second one which will start decompilation as background task. The apk file will be detected from the project directory, if the apk file is not present the plugin actions will be disabled. Results of the decompilation will be in the decompiled directory of the project.
