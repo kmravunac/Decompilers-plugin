@@ -26,12 +26,17 @@ public class DecompileAPK extends AnAction {
     public void actionPerformed(AnActionEvent event) {
         Project project = event.getData(PlatformDataKeys.PROJECT);
 
-        if(DefineSettings.settings == null || !DefineSettings.settings.isAnySelected()) {
-            JOptionPane.showMessageDialog(null, "Settings are not initialized, please initialize decompilers settings by using Define decompiler settings option.", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            ProgressManager.getInstance().run(new Task.Backgroundable(project, "Decompilation"){
+        boolean isDefault = DefineSettings.settings.getIsDefault();
+        int status = JOptionPane.YES_OPTION;
+
+        if(isDefault) {
+            status = JOptionPane.showConfirmDialog(null, "Using default decompilers settings (all decompilers selected, no arguments), are you sure you want to proceed?", "Warning", JOptionPane.YES_NO_OPTION);
+        }
+
+        if(status == JOptionPane.YES_OPTION) {
+            ProgressManager.getInstance().run(new Task.Backgroundable(project, "Decompilation") {
                 public void run(ProgressIndicator indicator) {
-                    indicator.setText("Decompilation in progres: preparing files...");
+                    indicator.setText("Decompilation in progress: preparing files...");
                     indicator.setFraction(0.01);
 
                     String projectDir = project.getBasePath();
@@ -58,7 +63,7 @@ public class DecompileAPK extends AnAction {
                     indicator.setFraction(0.25);
 
                     if (DefineSettings.settings.isJadxSelected()) {
-                        indicator.setText("Decompilation in progres: running Jadx...");
+                        indicator.setText("Decompilation in progress: running Jadx...");
                         JadxWrapper jadx;
 
                         File jadxout = new File(projectDir + Utils.jadxOutput);
@@ -77,32 +82,32 @@ public class DecompileAPK extends AnAction {
 
                     indicator.setFraction(0.5);
 
-                    if(DefineSettings.settings.isProcyonSelected()) {
-                        indicator.setText("Decompilation in progres: running Procyon...");
+                    if (DefineSettings.settings.isProcyonSelected()) {
+                        indicator.setText("Decompilation in progress: running Procyon...");
                         String procyonOut = new String(projectDir + Utils.procyonOutput);
 
                         ProcyonWrapper procyon = new ProcyonWrapper(procyonOut, outJarFile);
                         try {
-                            if(procyonArgs == null)
+                            if (procyonArgs == null)
                                 procyon.decompile();
                             else {
                                 String args[] = procyonArgs.trim().split("\\s+");
                                 procyon.decompile(args);
                             }
-                        } catch(Exception e) {
+                        } catch (Exception e) {
                             procyonFailed = e.toString();
                         }
                     }
 
                     indicator.setFraction(0.75);
 
-                    if(DefineSettings.settings.isFernFlowerSelected()) {
-                        indicator.setText("Decompilation in progres: running FernFlower...");
+                    if (DefineSettings.settings.isFernFlowerSelected()) {
+                        indicator.setText("Decompilation in progress: running FernFlower...");
                         String fernFlowerOut = new String(projectDir + Utils.fernflowerOutput);
 
                         FernFlowerWrapper fernFlower = new FernFlowerWrapper(fernFlowerOut, outJarFile);
                         try {
-                            if(fernFlowerArgs == null)
+                            if (fernFlowerArgs == null)
                                 fernFlower.decompile();
                             else {
                                 String[] args = fernFlowerArgs.trim().split("\\s+");
@@ -113,18 +118,23 @@ public class DecompileAPK extends AnAction {
                         }
                     }
 
-                    indicator.setText("Decompilation in progress, refreshing project directory...");
+                    indicator.setFraction(0.9);
+                    indicator.setText("Backuping smali output...");
+
+                    Utils.copyDirectory(projectDir + Utils.smaliCodeLocation, projectDir + Utils.smaliDir);
+
+                    indicator.setText("Refreshing project directory...");
                     indicator.setFraction(0.99);
 
                     String message = "";
-                    if(jadxFailed != null)
+                    if (jadxFailed != null)
                         message += jadxFailed + "\n";
-                    if(procyonFailed != null)
+                    if (procyonFailed != null)
                         message += procyonFailed + "\n";
-                    if(fernFlowerFailed != null)
+                    if (fernFlowerFailed != null)
                         message += fernFlowerFailed + "\n";
 
-                    if(!message.isEmpty())
+                    if (!message.isEmpty())
                         JOptionPane.showMessageDialog(null, "There were some errors during decompilation:\n\n" + message, "Informational message", JOptionPane.ERROR_MESSAGE);
                     else
                         JOptionPane.showMessageDialog(null, "Decompilation was succesful.", "Informational message", JOptionPane.INFORMATION_MESSAGE);

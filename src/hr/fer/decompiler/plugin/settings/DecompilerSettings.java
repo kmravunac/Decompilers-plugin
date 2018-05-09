@@ -5,17 +5,20 @@ public class DecompilerSettings {
     private boolean procyonSelected;
     private boolean fernFlowerSelected;
 
+    private boolean isDefault = true;
+
     private String jadxArgs;
     private String procyonArgs;
     private String fernFlowerArgs;
 
-    public DecompilerSettings(boolean jadxSelected, boolean procyonSelected, boolean fernFlowerSelected, String jadxArgs, String procyonArgs, String fernFlowerArgs) {
+    public DecompilerSettings(boolean jadxSelected, boolean procyonSelected, boolean fernFlowerSelected, String jadxArgs, String procyonArgs, String fernFlowerArgs, boolean isDefault) {
         this.jadxSelected = jadxSelected;
         this.procyonSelected = procyonSelected;
         this.fernFlowerSelected = fernFlowerSelected;
         this.jadxArgs = jadxArgs;
         this.procyonArgs = procyonArgs;
         this.fernFlowerArgs = fernFlowerArgs;
+        this.isDefault = isDefault;
     }
 
     public boolean isJadxSelected() {
@@ -64,6 +67,14 @@ public class DecompilerSettings {
 
     public void setFernFlowerArgs(String fernFlowerArgs) {
         this.fernFlowerArgs = fernFlowerArgs;
+    }
+
+    public void setIsDefault(boolean isDefault) {
+        this.isDefault = isDefault;
+    }
+
+    public boolean getIsDefault() {
+        return isDefault;
     }
 
     public boolean isAnySelected() {

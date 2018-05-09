@@ -2,14 +2,15 @@
   <id>hr.fer.decompiler</id>
   <name>Decompiler</name>
   <version>0.0.1</version>
-  <vendor email="karlo.mravunac@fer.hr" url="https://github.com/kmravunac/project-plugin">Decompiler</vendor>
+  <vendor email="karlo.mravunac@fer.hr" url="https://github.com/kmravunac/Decompilers-plugin">Decompiler</vendor>
 
   <description><![CDATA[
       Plugin which integrates some of the Java decompilers.<br>
     ]]></description>
 
   <change-notes><![CDATA[
-      Integrated decompilers. Workflow reworked so the decompilation is done in background task.<br>
+      Integrated decompilers. Workflow reworked so the decompilation is done in background task.
+      Added feature to view sources of other decompilers and smali sources on right click.<br>
     ]]>
   </change-notes>
 
@@ -30,9 +31,19 @@
     <!-- Add your actions here -->
     <group id="Decompiler.DecompileMenu" text="_Decompiler" description="Decompiler plugin">
       <add-to-group group-id="MainMenu" anchor="last"  />
-      <action id="Decompilator.DecompileAPK" class="hr.fer.decompiler.plugin.action.DecompileAPK" text="Decompile _APK" description="Action for apk decompilation" />
+      <action id="Decompiler.DecompileAPK" class="hr.fer.decompiler.plugin.action.DecompileAPK" text="Decompile _APK" description="Action for apk decompilation" />
       <!-- <action id="Decompiler.ImportAPK" class="hr.fer.decompiler.plugin.action.ImportAPK" text="Import APK to project" description="Action for apk importation and decompilation"/>-->
       <action id="Decompiler.DefineSettings" class="hr.fer.decompiler.plugin.action.DefineSettings" text="Define plugin settings" description="Action for plugin arguments definition"/>
+    </group>
+
+    <group id="Decompiler.ViewMenu" text="Decompiler" popup="true">
+      <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
+      <group id="Decompiler.ViewMenu.View" text="View another source" popup="true">
+        <action class="hr.fer.decompiler.plugin.action.ViewJadxSource" id="Decompiler.ViewJadxSource" text="View Jadx source" description="View source from Jadx decompiler"/>
+        <action class="hr.fer.decompiler.plugin.action.ViewProcyonSource" id="Decompiler.ViewProcyonSource" text="View Procyon source" description="View source from Procyon decompiler" />
+        <action class="hr.fer.decompiler.plugin.action.ViewFernFlowerSource" id="Decompiler.ViewFernFlowerSource" text="View FernFlower source" description="View source from FernFlower decompiler"/>
+        <action class="hr.fer.decompiler.plugin.action.ViewSmali" id="Decompielr.ViewSmali" text="View smali code" description="View smali code of the given source" />
+      </group>
     </group>
   </actions>
 

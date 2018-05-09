@@ -17,7 +17,7 @@ public class DefineSettings extends AnAction {
 
     public DefineSettings() {
         super("Configure _Settings");
-        settings = null;
+        settings = new DecompilerSettings(true, true, true, null, null, null, true);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class DefineSettings extends AnAction {
             fernFlowerArgs = settingsForm.getFernFlowerArgs();
         } catch(Exception e) {};
 
-        settings = new DecompilerSettings(settingsForm.jadxSelected(), settingsForm.procyonSelected(), settingsForm.fernFlowerSelected(), jadxArgs, procyonArgs, fernFlowerArgs);
+        settings = new DecompilerSettings(settingsForm.jadxSelected(), settingsForm.procyonSelected(), settingsForm.fernFlowerSelected(), jadxArgs, procyonArgs, fernFlowerArgs, false);
     }
 
     @Override
