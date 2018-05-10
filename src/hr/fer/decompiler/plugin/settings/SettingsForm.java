@@ -51,6 +51,10 @@ public class SettingsForm extends DialogWrapper {
                 fernFlowerArgumentsField.setEnabled(fernFlowerCheckBox.isSelected());
             }
         });
+
+        jadxCheckBox.setSelected(true);
+        procyonCheckBox.setSelected(true);
+        fernFlowerCheckBox.setSelected(true);
     }
 
     public String getJadxArgs() {

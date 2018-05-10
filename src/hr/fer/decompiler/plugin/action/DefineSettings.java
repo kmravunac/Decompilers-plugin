@@ -1,14 +1,12 @@
 package hr.fer.decompiler.plugin.action;
 
-import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import com.intellij.openapi.actionSystem.Presentation;
+import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.project.Project;
 import hr.fer.decompiler.plugin.settings.DecompilerSettings;
 import hr.fer.decompiler.plugin.settings.SettingsForm;
 import hr.fer.decompiler.util.utility.Utils;
 
+import javax.swing.*;
 import java.io.File;
 
 
@@ -16,7 +14,7 @@ public class DefineSettings extends AnAction {
     public static DecompilerSettings settings;
 
     public DefineSettings() {
-        super("Configure _Settings");
+        super("Define _Settings");
         settings = new DecompilerSettings(true, true, true, null, null, null, true);
     }
 
@@ -55,5 +53,7 @@ public class DefineSettings extends AnAction {
 
         if(apk == null)
             presentation.setEnabled(false);
+        else
+            presentation.setEnabled(true);
     }
 }

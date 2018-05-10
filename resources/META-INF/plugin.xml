@@ -32,12 +32,12 @@
     <group id="Decompiler.DecompileMenu" text="_Decompiler" description="Decompiler plugin">
       <add-to-group group-id="MainMenu" anchor="last"  />
       <action id="Decompiler.DecompileAPK" class="hr.fer.decompiler.plugin.action.DecompileAPK" text="Decompile _APK" description="Action for apk decompilation" />
-      <!-- <action id="Decompiler.ImportAPK" class="hr.fer.decompiler.plugin.action.ImportAPK" text="Import APK to project" description="Action for apk importation and decompilation"/>-->
-      <action id="Decompiler.DefineSettings" class="hr.fer.decompiler.plugin.action.DefineSettings" text="Define plugin settings" description="Action for plugin arguments definition"/>
+      <action id="Decompiler.DefineSettings" class="hr.fer.decompiler.plugin.action.DefineSettings" text="Plugin settings" description="Action for plugin arguments definition"/>
     </group>
 
     <group id="Decompiler.ViewMenu" text="Decompiler" popup="true">
       <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
+      <action id="Decompiler.DecompileAPK" class="hr.fer.decompiler.plugin.action.DecompileAPK" text="Decompile _APK" description="Action for apk decompilation" />
       <group id="Decompiler.ViewMenu.View" text="View another source" popup="true">
         <action class="hr.fer.decompiler.plugin.action.ViewJadxSource" id="Decompiler.ViewJadxSource" text="View Jadx source" description="View source from Jadx decompiler"/>
         <action class="hr.fer.decompiler.plugin.action.ViewProcyonSource" id="Decompiler.ViewProcyonSource" text="View Procyon source" description="View source from Procyon decompiler" />
