@@ -30,7 +30,7 @@ public class DecompileAPK extends AnAction {
         int decompiledStatus = JOptionPane.YES_OPTION;
 
         String decompiledDirPath = project.getBasePath() + Utils.decompiledRoot;
-        String tmpDirPath = project.getBasePath() + Utils.tmpDir;
+        String backupDir = project.getBasePath() + Utils.backupDir;
         File decompiledDir = new File(decompiledDirPath);
 
         if(isDefault) {
@@ -59,6 +59,7 @@ public class DecompileAPK extends AnAction {
 
                         try {
                             Utils.cleanupDirectory(decompiledDirPath);
+                            Utils.cleanupDirectory(backupDir);
                         } catch (IOException e) {
                             error = true;
                             message += e.toString() + "\n";

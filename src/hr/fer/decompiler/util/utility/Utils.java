@@ -21,6 +21,11 @@ public class Utils {
     public static final String jarFile = "/out.jar";
     public static final String smaliDir = "/decompiled/smali";
     public static final String smaliCodeLocation = "/smali/out";
+    public static final String backupDir = "/tmp/backup";
+    public static final String jadxBackup = "/tmp/backup/jadx";
+    public static final String procyonBackup = "/tmp/backup/procyon";
+    public static final String fernFlowerBackup = "/tmp/backup/fernflower";
+    public static final String smaliBackup = "/tmp/backup/smali";
 
     public static File fetchManifest(File startDir) {
         File manifest = null;
@@ -79,6 +84,11 @@ public class Utils {
         String procyonOutput = projectPath + Utils.procyonOutput;
         String fernFlowerOutput = projectPath + Utils.fernflowerOutput;
         String smaliDir = projectPath + Utils.smaliDir;
+        String backupDir = projectPath + Utils.backupDir;
+        String jadxBackup = projectPath + Utils.jadxBackup;
+        String procyonBackup = projectPath + Utils.procyonBackup;
+        String fernFlowerBackup = projectPath + Utils.fernFlowerBackup;
+        String smaliBackup = projectPath + Utils.smaliBackup;
 
         new File(tmpDir).mkdirs();
         new File(decompiledDir).mkdirs();
@@ -86,6 +96,11 @@ public class Utils {
         new File(procyonOutput).mkdirs();
         new File(fernFlowerOutput).mkdirs();
         new File(smaliDir).mkdirs();
+        new File(backupDir).mkdirs();
+        new File(jadxBackup).mkdirs();
+        new File(procyonBackup).mkdirs();
+        new File(fernFlowerBackup).mkdirs();
+        new File(smaliBackup).mkdir();
     }
 
     public static void copyDirectory(String src, String dest) {
@@ -109,5 +124,51 @@ public class Utils {
         result = result.replace(".smali", ".java");
 
         return result;
+    }
+
+    public static boolean hasBackup(String fileName, String backupPath, String backupSuffix) {
+        String filePath = backupPath + "/" + fileName + backupSuffix;
+
+        Path path = Paths.get(filePath);
+
+        return Files.exists(path);
+    }
+
+    public static void backupFile(String fileName, String backupPath, String originalPath, String backupSuffix) {
+        String filePath = backupPath + "/" + fileName + backupSuffix;
+
+        try {
+            Files.copy(Paths.get(originalPath), Paths.get(filePath));
+        } catch(IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static String determineBackupSuffix(String originalPath) {
+        if(originalPath.contains("jadx-output")) {
+            return ".jadx";
+        } else if(originalPath.contains("fernflower-output")) {
+            return ".fernflower";
+        } else if(originalPath.contains("procyon-output")) {
+            return ".procyon";
+        } else if(originalPath.contains("smali/out")) {
+            return ".smal";
+        } else {
+            return "";
+        }
+    }
+
+    public static String determineDirectorySuffix(String filePath) {
+        if(filePath.contains("jadx-output")) {
+            return jadxBackup;
+        } else if(filePath.contains("fernflower-output")) {
+            return fernFlowerBackup;
+        } else if(filePath.contains("procyon-output")) {
+            return procyonBackup;
+        }else if(filePath.contains("smali/out")) {
+            return smaliBackup;
+        } else {
+            return "";
+        }
     }
 }

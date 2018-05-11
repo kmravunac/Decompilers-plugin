@@ -38,11 +38,17 @@
     <group id="Decompiler.ViewMenu" text="Decompiler" popup="true">
       <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
       <action id="Decompiler.DecompileAPK" class="hr.fer.decompiler.plugin.action.DecompileAPK" text="Decompile _APK" description="Action for apk decompilation" />
+      <action id="Decompiler.RevertFile" class="hr.fer.decompiler.plugin.action.RevertFile" text="Revert original file" description="Revert file to original source" />
       <group id="Decompiler.ViewMenu.View" text="View another source" popup="true">
         <action class="hr.fer.decompiler.plugin.action.ViewJadxSource" id="Decompiler.ViewJadxSource" text="View Jadx source" description="View source from Jadx decompiler"/>
         <action class="hr.fer.decompiler.plugin.action.ViewProcyonSource" id="Decompiler.ViewProcyonSource" text="View Procyon source" description="View source from Procyon decompiler" />
         <action class="hr.fer.decompiler.plugin.action.ViewFernFlowerSource" id="Decompiler.ViewFernFlowerSource" text="View FernFlower source" description="View source from FernFlower decompiler"/>
-        <action class="hr.fer.decompiler.plugin.action.ViewSmali" id="Decompielr.ViewSmali" text="View smali code" description="View smali code of the given source" />
+        <action class="hr.fer.decompiler.plugin.action.ViewSmali" id="Decompiler.ViewSmali" text="View smali code" description="View smali code of the given source" />
+      </group>
+      <group id="Decompiler.ReplaceMenu.Replace" text="Replace with" popup="true">
+        <action class="hr.fer.decompiler.plugin.action.ReplaceWithJadx" id="Decompiler.ReplaceWithJadx" text="Jadx source" description="Replace selected source with Jadx source"/>
+        <action class="hr.fer.decompiler.plugin.action.ReplaceWithProcyon" id="Decompiler.ReplaceWithProcyon" text="Procyon source" description="Replace selected source with Procyon source" />
+        <action class="hr.fer.decompiler.plugin.action.ReplaceWithFernFlower" id="Decompiler.ReplaceWithFernFlower" text="FernFlower source" description="Replace selected source with FernFlower source"/>
       </group>
     </group>
   </actions>
