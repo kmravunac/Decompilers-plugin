@@ -14,8 +14,7 @@ import hr.fer.decompiler.util.wrapper.JadxWrapper;
 import hr.fer.decompiler.util.wrapper.ProcyonWrapper;
 
 import javax.swing.*;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 public class DecompileAPK extends AnAction {
     public DecompileAPK() {
@@ -95,11 +94,28 @@ public class DecompileAPK extends AnAction {
                         String procyonFailed = null;
                         String fernFlowerFailed = null;
 
+                        PrintStream console = System.out;
+
                         indicator.setFraction(0.25);
 
                         if (DefineSettings.settings.isJadxSelected()) {
                             indicator.setText("Decompilation in progress: running Jadx...");
                             JadxWrapper jadx;
+
+                            File jadxLog = new File(projectDir + Utils.jadxLog);
+                            try {
+                                jadxLog.createNewFile();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            PrintStream ps = null;
+                            try {
+                                ps = new PrintStream(new FileOutputStream(jadxLog));
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                            System.setOut(ps);
 
                             File jadxout = new File(projectDir + Utils.jadxOutput);
 
@@ -113,6 +129,8 @@ public class DecompileAPK extends AnAction {
                             } catch (Exception e) {
                                 jadxFailed = e.toString();
                             }
+
+                            System.setOut(console);
                         }
 
                         indicator.setFraction(0.5);
@@ -120,6 +138,21 @@ public class DecompileAPK extends AnAction {
                         if (DefineSettings.settings.isProcyonSelected()) {
                             indicator.setText("Decompilation in progress: running Procyon...");
                             String procyonOut = new String(projectDir + Utils.procyonOutput);
+
+                            File procyonLog = new File(projectDir + Utils.procyonLog);
+                            try {
+                                procyonLog.createNewFile();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            PrintStream ps = null;
+                            try {
+                                ps = new PrintStream(new FileOutputStream(procyonLog));
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                            System.setOut(ps);
 
                             ProcyonWrapper procyon = new ProcyonWrapper(procyonOut, outJarFile);
                             try {
@@ -132,6 +165,8 @@ public class DecompileAPK extends AnAction {
                             } catch (Exception e) {
                                 procyonFailed = e.toString();
                             }
+
+                            System.setOut(console);
                         }
 
                         indicator.setFraction(0.75);
@@ -139,6 +174,21 @@ public class DecompileAPK extends AnAction {
                         if (DefineSettings.settings.isFernFlowerSelected()) {
                             indicator.setText("Decompilation in progress: running FernFlower...");
                             String fernFlowerOut = new String(projectDir + Utils.fernflowerOutput);
+
+                            File fernflowerLog = new File(projectDir + Utils.fernflowerLog);
+                            try {
+                                fernflowerLog.createNewFile();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            PrintStream ps = null;
+                            try {
+                                ps = new PrintStream(new FileOutputStream(fernflowerLog));
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                            System.setOut(ps);
 
                             FernFlowerWrapper fernFlower = new FernFlowerWrapper(fernFlowerOut, outJarFile);
                             try {
@@ -151,6 +201,8 @@ public class DecompileAPK extends AnAction {
                             } catch (Exception e) {
                                 fernFlowerFailed = e.toString();
                             }
+
+                            System.setOut(console);
                         }
 
                         indicator.setFraction(0.9);

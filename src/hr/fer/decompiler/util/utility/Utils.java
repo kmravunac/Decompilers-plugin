@@ -26,6 +26,10 @@ public class Utils {
     public static final String procyonBackup = "/tmp/backup/procyon";
     public static final String fernFlowerBackup = "/tmp/backup/fernflower";
     public static final String smaliBackup = "/tmp/backup/smali";
+    public static final String logDir = "/logs";
+    public static final String jadxLog = "/logs/jadx-log.txt";
+    public static final String procyonLog = "/logs/procyon-log.txt";
+    public static final String fernflowerLog = "/logs/fernflower-log.txt";
 
     public static File fetchManifest(File startDir) {
         File manifest = null;
@@ -89,6 +93,7 @@ public class Utils {
         String procyonBackup = projectPath + Utils.procyonBackup;
         String fernFlowerBackup = projectPath + Utils.fernFlowerBackup;
         String smaliBackup = projectPath + Utils.smaliBackup;
+        String logDirectory = projectPath + Utils.logDir;
 
         new File(tmpDir).mkdirs();
         new File(decompiledDir).mkdirs();
@@ -100,7 +105,8 @@ public class Utils {
         new File(jadxBackup).mkdirs();
         new File(procyonBackup).mkdirs();
         new File(fernFlowerBackup).mkdirs();
-        new File(smaliBackup).mkdir();
+        new File(smaliBackup).mkdirs();
+        new File(logDirectory).mkdirs();
     }
 
     public static void copyDirectory(String src, String dest) {
