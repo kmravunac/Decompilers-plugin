@@ -2,6 +2,7 @@ package hr.fer.decompiler.util.utility;
 
 import org.apache.commons.io.FileUtils;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
@@ -116,7 +117,7 @@ public class Utils {
         try {
             FileUtils.copyDirectory(srcFile, destFile);
         } catch(IOException e) {
-            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "Something went wrong when copying files: " + e.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -132,35 +133,21 @@ public class Utils {
         return result;
     }
 
-    public static boolean hasBackup(String fileName, String backupPath, String backupSuffix) {
-        String filePath = backupPath + "/" + fileName + backupSuffix;
+    public static boolean hasBackup(String fileName, String backupPath) {
+        String filePath = backupPath + "/" + fileName;
 
         Path path = Paths.get(filePath);
 
         return Files.exists(path);
     }
 
-    public static void backupFile(String fileName, String backupPath, String originalPath, String backupSuffix) {
-        String filePath = backupPath + "/" + fileName + backupSuffix;
+    public static void backupFile(String fileName, String backupPath, String originalPath) {
+        String filePath = backupPath + "/" + fileName;
 
         try {
             Files.copy(Paths.get(originalPath), Paths.get(filePath));
         } catch(IOException e) {
             System.out.println(e.getMessage());
-        }
-    }
-
-    public static String determineBackupSuffix(String originalPath) {
-        if(originalPath.contains("jadx-output")) {
-            return ".jadx";
-        } else if(originalPath.contains("fernflower-output")) {
-            return ".fernflower";
-        } else if(originalPath.contains("procyon-output")) {
-            return ".procyon";
-        } else if(originalPath.contains("smali/out")) {
-            return ".smal";
-        } else {
-            return "";
         }
     }
 

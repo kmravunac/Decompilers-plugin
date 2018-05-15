@@ -38,10 +38,8 @@ public class ReplaceWithFernFlower extends AnAction {
             String directorySuffix = Utils.determineDirectorySuffix(originalFilePath);
             String backupPath = projectPath + directorySuffix;
 
-            String backupSuffix = Utils.determineBackupSuffix(originalFilePath);
-
-            if(!Utils.hasBackup(file, backupPath, backupSuffix)) {
-                Utils.backupFile(file, backupPath, originalFilePath, backupSuffix);
+            if(!Utils.hasBackup(file, backupPath)) {
+                Utils.backupFile(file, backupPath, originalFilePath);
             }
 
             String fileToBeCopied = projectPath + Utils.fernflowerOutput + "/" + filePath;

@@ -223,7 +223,7 @@ public class DecompileAPK extends AnAction {
                         if (!message.isEmpty())
                             JOptionPane.showMessageDialog(null, "There were some errors during decompilation:\n\n" + message, "Informational message", JOptionPane.ERROR_MESSAGE);
                         else
-                            JOptionPane.showMessageDialog(null, "Decompilation was succesful.", "Informational message", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Decompilation was succesful.", "Decompiler", JOptionPane.INFORMATION_MESSAGE);
 
                         project.getBaseDir().refresh(false, true);
                     }
