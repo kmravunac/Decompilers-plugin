@@ -37,7 +37,7 @@ public class ViewFernFlowerSource extends AnAction {
         Presentation presentation = event.getPresentation();
 
         String filePath = selectedFile.getCanonicalPath();
-        boolean enable = !filePath.contains(Utils.fernflowerOutput) &&
+        boolean enable = !filePath.contains(Utils.fernflowerOutput) && filePath.contains(".java") &&
                 (filePath.contains(Utils.jadxOutput) || filePath.contains(Utils.procyonOutput) || filePath.contains(Utils.smaliDir) || filePath.contains(Utils.smaliCodeLocation));
 
         if(selectedFile == null || !enable)

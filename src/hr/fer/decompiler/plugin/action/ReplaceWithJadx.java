@@ -65,6 +65,10 @@ public class ReplaceWithJadx extends AnAction {
                         VirtualFile newFile = LocalFileSystem.getInstance().findFileByPath(originalFilePath);
                         FileEditorManager.getInstance(project).openFile(newFile, true);
                     } else {
+                        if(file.isEmpty()) {
+                            file = Utils.determineDirectoryPath(originalFilePath);
+                        }
+
                         String backupDirPath = backupPath + "/" + file;
 
                         if (!Utils.hasBackup(file, backupPath)) {

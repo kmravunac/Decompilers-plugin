@@ -37,6 +37,10 @@ public class RevertFile extends AnAction {
         String[] splitPath = filePath.split("/");
         String file = splitPath[splitPath.length - 1];
 
+        if(file.isEmpty()) {
+            file = Utils.determineDirectoryPath(selectedFilePath);
+        }
+
         String backupFile = project.getBasePath() + backupDirectory + "/" + file;
 
         ProgressManager.getInstance().run(new Task.Backgroundable(project, "Reverting files") {
@@ -58,9 +62,7 @@ public class RevertFile extends AnAction {
 
                     VirtualFile newFile = LocalFileSystem.getInstance().findFileByPath(selectedFilePath);
                     FileEditorManager.getInstance(project).openFile(newFile, true);
-                } else
-
-                {
+                } else {
                     Utils.copyDirectory(backupFile, selectedFilePath);
 
                     try {
@@ -87,6 +89,10 @@ public class RevertFile extends AnAction {
         String filePath = Utils.preparePath(selectedFilePath, project.getBasePath());
         String[] splitPath = filePath.split("/");
         String file = splitPath[splitPath.length - 1];
+
+        if(file.isEmpty()) {
+            file = Utils.determineDirectoryPath(selectedFilePath);
+        }
 
         String backupFile = project.getBasePath() + backupDirectory + "/" + file;
 

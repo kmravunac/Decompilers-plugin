@@ -36,7 +36,7 @@ public class ViewJadxSource extends AnAction {
         Presentation presentation = event.getPresentation();
 
         String filePath = selectedFile.getCanonicalPath();
-        boolean enable = !filePath.contains(Utils.jadxOutput) &&
+        boolean enable = !filePath.contains(Utils.jadxOutput) && filePath.contains(".java") &&
                 (filePath.contains(Utils.fernflowerOutput) || filePath.contains(Utils.procyonOutput) || filePath.contains(Utils.smaliDir) || filePath.contains(Utils.smaliCodeLocation));
 
         if(selectedFile == null || !enable)

@@ -133,6 +133,11 @@ public class Utils {
         return result;
     }
 
+    public static String determineDirectoryPath(String filePath) {
+        String[] splitPath = filePath.split("/");
+        return splitPath[splitPath.length - 1];
+    }
+
     public static boolean hasBackup(String fileName, String backupPath) {
         String filePath = backupPath + "/" + fileName;
 
