@@ -6,3 +6,5 @@
 .idea/libraries
 
 /out/
+
+*.zip

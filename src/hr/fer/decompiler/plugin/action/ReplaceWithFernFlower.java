@@ -93,7 +93,7 @@ public class ReplaceWithFernFlower extends AnAction {
         String filePath = selectedFile.getCanonicalPath();
 
         boolean enable = (filePath.contains(".java") || selectedFile.isDirectory()) &&
-                (filePath.contains(Utils.procyonOutput) || filePath.contains(Utils.jadxOutput) || filePath.contains(Utils.smaliCodeLocation));
+                (filePath.contains(Utils.procyonOutput) || filePath.contains(Utils.jadxOutput));
 
         if(selectedFile == null || !enable)
             presentation.setEnabled(false);

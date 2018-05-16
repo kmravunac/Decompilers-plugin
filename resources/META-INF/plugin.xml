@@ -50,6 +50,11 @@
         <action class="hr.fer.decompiler.plugin.action.ReplaceWithProcyon" id="Decompiler.ReplaceWithProcyon" text="Procyon source" description="Replace selected source with Procyon source" />
         <action class="hr.fer.decompiler.plugin.action.ReplaceWithFernFlower" id="Decompiler.ReplaceWithFernFlower" text="FernFlower source" description="Replace selected source with FernFlower source"/>
       </group>
+      <group id="Decompiler.CompareMenu.Compare" text="Compare with" popup="true">
+        <action class="hr.fer.decompiler.plugin.action.CompareWithJadx" id="Decompiler.CompareWithJadx" text="Jadx source" description="Compare selected source with Jadx source"/>
+        <action class="hr.fer.decompiler.plugin.action.CompareWithProcyon" id="Decompiler.CompareWithProcyon" text="Procyon source" description="Compare selected source with Procyon source"/>
+        <action class="hr.fer.decompiler.plugin.action.CompareWithFernFlower" id="Decompiler.CompareWithFernFlower" text="FernFlower source" description="Compare selected source with FernFlower source"/>
+      </group>
     </group>
   </actions>
 

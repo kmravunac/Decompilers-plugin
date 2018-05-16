@@ -93,7 +93,7 @@ public class ReplaceWithJadx extends AnAction {
         String filePath = selectedFile.getCanonicalPath();
 
         boolean enable = (filePath.contains(".java") || selectedFile.isDirectory()) &&
-                (filePath.contains(Utils.fernflowerOutput) || filePath.contains(Utils.procyonOutput) || filePath.contains(Utils.smaliCodeLocation));
+                (filePath.contains(Utils.fernflowerOutput) || filePath.contains(Utils.procyonOutput));
 
         if(selectedFile == null || !enable)
             presentation.setEnabled(false);
