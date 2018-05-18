@@ -27,10 +27,6 @@ public class SettingsForm extends DialogWrapper {
         decompilersPanel.setMinimumSize(new Dimension(400, 400));
         setSize(400, 400);
 
-        jadxArgumentsField.setEnabled(false);
-        procyonArgumentsField.setEnabled(false);
-        fernFlowerArgumentsField.setEnabled(false);
-
         jadxCheckBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
