@@ -238,14 +238,18 @@ public class DecompileAPK extends AnAction {
         Project project = event.getData(PlatformDataKeys.PROJECT);
         VirtualFile selectedFile = event.getData(DataKeys.VIRTUAL_FILE);
 
-        File apk = Utils.fetchApk(project.getBasePath());
+        if(selectedFile != null) {
+            File apk = Utils.fetchApk(project.getBasePath());
 
-        if(apk == null)
-            presentation.setEnabled(false);
-        else if(!selectedFile.getName().contains(".apk")) {
-            presentation.setEnabledAndVisible(false);
+            if (apk == null)
+                presentation.setEnabled(false);
+            else if (!selectedFile.getName().contains(".apk")) {
+                presentation.setEnabledAndVisible(false);
+            } else {
+                presentation.setEnabled(true);
+            }
         } else {
-            presentation.setEnabled(true);
+            presentation.setEnabled(false);
         }
     }
 }

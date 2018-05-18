@@ -37,6 +37,7 @@
 
     <group id="Decompiler.ViewMenu" text="Decompiler" popup="true">
       <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
+      <action id="Decompiler.Test" class="hr.fer.decompiler.plugin.action.Test"/>
       <action id="Decompiler.DecompileAPK" class="hr.fer.decompiler.plugin.action.DecompileAPK" text="Decompile _APK" description="Action for apk decompilation" />
       <action id="Decompiler.RevertFile" class="hr.fer.decompiler.plugin.action.RevertFile" text="Revert original file" description="Revert file to original source" />
       <action id="Decompiler.ViewLog" class="hr.fer.decompiler.plugin.action.ViewLog" text="View log" description="Displays log file" />

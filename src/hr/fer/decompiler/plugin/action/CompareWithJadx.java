@@ -41,11 +41,15 @@ public class CompareWithJadx extends AnAction {
         VirtualFile selectedFile = event.getData(DataKeys.VIRTUAL_FILE);
         Presentation presentation = event.getPresentation();
 
-        String filePath = selectedFile.getCanonicalPath();
-        boolean enable = !filePath.contains(Utils.jadxOutput) && filePath.contains(".java") &&
-                (filePath.contains(Utils.fernflowerOutput) || filePath.contains(Utils.procyonOutput));
+        if(selectedFile != null) {
+            String filePath = selectedFile.getCanonicalPath();
+            boolean enable = !filePath.contains(Utils.jadxOutput) && filePath.contains(".java") &&
+                    (filePath.contains(Utils.fernflowerOutput) || filePath.contains(Utils.procyonOutput));
 
-        if(selectedFile == null || !enable)
+            if (!enable)
+                presentation.setEnabled(false);
+        } else {
             presentation.setEnabled(false);
+        }
     }
 }

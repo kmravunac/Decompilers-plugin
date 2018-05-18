@@ -83,24 +83,28 @@ public class RevertFile extends AnAction {
         VirtualFile selectedFile = event.getData(DataKeys.VIRTUAL_FILE);
         Project project = event.getProject();
 
-        String selectedFilePath = selectedFile.getCanonicalPath();
-        String backupDirectory = Utils.determineDirectorySuffix(selectedFilePath);
+        if(selectedFile != null) {
+            String selectedFilePath = selectedFile.getCanonicalPath();
+            String backupDirectory = Utils.determineDirectorySuffix(selectedFilePath);
 
-        String filePath = Utils.preparePath(selectedFilePath, project.getBasePath());
-        String[] splitPath = filePath.split("/");
-        String file = splitPath[splitPath.length - 1];
+            String filePath = Utils.preparePath(selectedFilePath, project.getBasePath());
+            String[] splitPath = filePath.split("/");
+            String file = splitPath[splitPath.length - 1];
 
-        if(file.isEmpty()) {
-            file = Utils.determineDirectoryPath(selectedFilePath);
-        }
+            if (file.isEmpty()) {
+                file = Utils.determineDirectoryPath(selectedFilePath);
+            }
 
-        String backupFile = project.getBasePath() + backupDirectory + "/" + file;
+            String backupFile = project.getBasePath() + backupDirectory + "/" + file;
 
-        boolean enable = (selectedFilePath.contains(".java") || selectedFile.isDirectory()) &&
-                (selectedFilePath.contains(Utils.jadxOutput) || selectedFilePath.contains(Utils.fernflowerOutput) ||
-                        selectedFilePath.contains(Utils.procyonOutput) || selectedFilePath.contains(Utils.smaliCodeLocation));
+            boolean enable = (selectedFilePath.contains(".java") || selectedFile.isDirectory()) &&
+                    (selectedFilePath.contains(Utils.jadxOutput) || selectedFilePath.contains(Utils.fernflowerOutput) ||
+                            selectedFilePath.contains(Utils.procyonOutput) || selectedFilePath.contains(Utils.smaliCodeLocation));
 
-        if(!Files.exists(Paths.get(backupFile)) || !enable) {
+            if (!Files.exists(Paths.get(backupFile)) || !enable) {
+                presentation.setEnabledAndVisible(false);
+            }
+        } else {
             presentation.setEnabledAndVisible(false);
         }
     }

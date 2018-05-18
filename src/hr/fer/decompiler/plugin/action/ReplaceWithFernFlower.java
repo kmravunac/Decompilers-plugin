@@ -90,12 +90,16 @@ public class ReplaceWithFernFlower extends AnAction {
         Presentation presentation = event.getPresentation();
         VirtualFile selectedFile = event.getData(DataKeys.VIRTUAL_FILE);
 
-        String filePath = selectedFile.getCanonicalPath();
+        if(selectedFile != null) {
+            String filePath = selectedFile.getCanonicalPath();
 
-        boolean enable = (filePath.contains(".java") || selectedFile.isDirectory()) &&
-                (filePath.contains(Utils.procyonOutput) || filePath.contains(Utils.jadxOutput));
+            boolean enable = (filePath.contains(".java") || selectedFile.isDirectory()) &&
+                    (filePath.contains(Utils.procyonOutput) || filePath.contains(Utils.jadxOutput));
 
-        if(selectedFile == null || !enable)
+            if (!enable)
+                presentation.setEnabled(false);
+        } else {
             presentation.setEnabled(false);
+        }
     }
 }
