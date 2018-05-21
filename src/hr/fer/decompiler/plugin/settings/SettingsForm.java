@@ -27,6 +27,16 @@ public class SettingsForm extends DialogWrapper {
         decompilersPanel.setMinimumSize(new Dimension(400, 400));
         setSize(400, 400);
 
+        jadxArgumentsField.setToolTipText("-j/--threads-count -r/--no-res -s/--no-src -e/--export-gradle --show-bad-code --no-imports" +
+                " --no-replace-consts --escape-unicode --deobf --deobf-min --deobf-max --deobf-rewrite-cfg --deobf-use-sourcename --cfg" +
+                " --raw-cfg -f/--fallback");
+
+        procyonArgumentsField.setToolTipText("-mv/--merge-variables -ei/--explicit-imports -eta/--explicit-type-arguments -ec/--retain-explicit-casts" +
+                " -fsb/--flatten-switch-blocks -ss/show-synthetic -b/--bytecode-ast -r/--raw-bytecode -u/--unoptimized -ent/--exclude-nested" +
+                " -ps/--retain-pointless-switches --unicode");
+
+        fernFlowerArgumentsField.setToolTipText("-rbr=0/1 -rsy=0/1 -din=0/1 -dc4=0/1 -das=0/1 -hes=0/1 -hdc=0/1 -dgs=0/1 -ner=0/1 ...");
+
         jadxCheckBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>hr.fer.decompiler</id>
   <name>Decompiler</name>
-  <version>0.0.1</version>
+  <version>0.1</version>
   <vendor email="karlo.mravunac@fer.hr" url="https://github.com/kmravunac/Decompilers-plugin">Decompiler</vendor>
 
   <description><![CDATA[
@@ -10,7 +10,9 @@
 
   <change-notes><![CDATA[
       Integrated decompilers. Workflow reworked so the decompilation is done in background task.
-      Added feature to view sources of other decompilers and smali sources on right click.<br>
+      Added feature to view sources of other decompilers and smali sources on right click.
+      Added feature to replace sources of one decompiler with sources from another one. Implemented
+      comparison of decompiler sources and logging.<br>
     ]]>
   </change-notes>
 
@@ -37,7 +39,6 @@
 
     <group id="Decompiler.ViewMenu" text="Decompiler" popup="true">
       <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
-      <!--<action id="Decompiler.Test" class="hr.fer.decompiler.plugin.action.Test"/>-->
       <action id="Decompiler.DecompileAPK" class="hr.fer.decompiler.plugin.action.DecompileAPK" text="Decompile _APK" description="Action for apk decompilation" />
       <action id="Decompiler.RevertFile" class="hr.fer.decompiler.plugin.action.RevertFile" text="Revert original file" description="Revert file to original source" />
       <action id="Decompiler.ViewLog" class="hr.fer.decompiler.plugin.action.ViewLog" text="View log" description="Displays log file" />
