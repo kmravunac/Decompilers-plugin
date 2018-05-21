@@ -25,3 +25,5 @@ Supported tools:
 - [Dex2Jar](https://github.com/pxb1988/dex2jar)
 
 Plugin creates two menu items: one for defining which decompilers to use and their arguments, and second one which will start decompilation as background task. The apk file will be detected from the project directory, if the apk file is not present the plugin actions will be disabled. Results of the decompilation will be in the decompiled directory of the project.
+
+On the right click user can replace sources of one decompiler with sources of another decompiler, view sources of another decompiler, compare sources, view logs and revert files to original if the file was replaced.
