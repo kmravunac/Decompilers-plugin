@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>hr.fer.decompiler</id>
   <name>Decompiler</name>
-  <version>0.1</version>
+  <version>0.2</version>
   <vendor email="karlo.mravunac@fer.hr" url="https://github.com/kmravunac/Decompilers-plugin">Decompiler</vendor>
 
   <description><![CDATA[
@@ -9,10 +9,15 @@
     ]]></description>
 
   <change-notes><![CDATA[
+      v0.1:
       Integrated decompilers. Workflow reworked so the decompilation is done in background task.
       Added feature to view sources of other decompilers and smali sources on right click.
       Added feature to replace sources of one decompiler with sources from another one. Implemented
-      comparison of decompiler sources and logging.<br>
+      comparison of decompiler sources and logging.
+
+      v0.2:
+      - crash fix
+      - minor improvements<br>
     ]]>
   </change-notes>
 
