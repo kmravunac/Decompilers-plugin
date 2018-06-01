@@ -31,6 +31,7 @@ public class Utils {
     public static final String jadxLog = "/logs/jadx-log.txt";
     public static final String procyonLog = "/logs/procyon-log.txt";
     public static final String fernflowerLog = "/logs/fernflower-log.txt";
+    public static final String pluginLog = "/logs/error-log.txt";
 
     public static File fetchManifest(File startDir) {
         File manifest = null;

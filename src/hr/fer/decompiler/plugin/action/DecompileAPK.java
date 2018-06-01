@@ -127,7 +127,7 @@ public class DecompileAPK extends AnAction {
                             try {
                                 jadx.decompile();
                             } catch (Exception e) {
-                                jadxFailed = e.toString();
+                                jadxFailed = e.getMessage();
                             }
 
                             System.setOut(console);
@@ -163,7 +163,7 @@ public class DecompileAPK extends AnAction {
                                     procyon.decompile(args);
                                 }
                             } catch (Exception e) {
-                                procyonFailed = e.toString();
+                                procyonFailed = e.getMessage();
                             }
 
                             System.setOut(console);
@@ -199,7 +199,7 @@ public class DecompileAPK extends AnAction {
                                     fernFlower.decompile(args);
                                 }
                             } catch (Exception e) {
-                                fernFlowerFailed = e.toString();
+                                fernFlowerFailed = e.getMessage();
                             }
 
                             System.setOut(console);
@@ -220,10 +220,21 @@ public class DecompileAPK extends AnAction {
                         if (fernFlowerFailed != null)
                             message += fernFlowerFailed + "\n";
 
-                        if (!message.isEmpty())
-                            JOptionPane.showMessageDialog(null, "There were some errors during decompilation:\n\n" + message, "Informational message", JOptionPane.ERROR_MESSAGE);
-                        else
+                        if (!message.isEmpty()) {
+                            String logFile = new String(projectDir + Utils.pluginLog);
+                            File pluginLog = new File(logFile);
+
+                            try {
+                                PrintWriter out = new PrintWriter(pluginLog);
+                                out.println(message);
+                            } catch(IOException e) {
+                                JOptionPane.showMessageDialog(null, "There were some errors during writing to log file", "Informational message", JOptionPane.ERROR_MESSAGE);
+                            }
+
+                            JOptionPane.showMessageDialog(null, "There were some errors during decompilation, please refer to log file: logs/error-log", "Informational message", JOptionPane.ERROR_MESSAGE);
+                        } else {
                             JOptionPane.showMessageDialog(null, "Decompilation was succesful.", "Decompiler", JOptionPane.INFORMATION_MESSAGE);
+                        }
 
                         project.getBaseDir().refresh(false, true);
                     }
